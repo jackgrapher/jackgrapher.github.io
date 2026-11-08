@@ -101,9 +101,13 @@ collections:
               - { name: phone, label: "Số điện thoại / Hotline", widget: string, hint: "Ví dụ 0901 234 567" }
               - { name: zalo, label: "Zalo (tuỳ chọn)", widget: string, required: false, hint: "Để trống sẽ dùng số điện thoại. Có thể dán link zalo.me/…" }
               - { name: email, label: "Email", widget: string }
+              - { name: hours, label: "Giờ làm việc (VI)", widget: string, required: false, hint: "Hiện trong bảng Liên hệ và footer. Ví dụ: Thứ Hai – Chủ Nhật · 8:00 – 21:00" }
+              - { name: hoursEn, label: "Giờ làm việc (EN)", widget: string, required: false }
               - { name: cities, label: "Khu vực hoạt động", widget: string }
-              - { name: facebook, label: "Link Facebook", widget: string }
-              - { name: instagram, label: "Link Instagram", widget: string }
+              - { name: facebook, label: "Link Facebook", widget: string, required: false, hint: "Dán link đầy đủ. Để trống sẽ tự ẩn." }
+              - { name: instagram, label: "Link Instagram", widget: string, required: false }
+              - { name: youtube, label: "Link YouTube", widget: string, required: false }
+              - { name: tiktok, label: "Link TikTok", widget: string, required: false }
           - name: metrics
             label: Số liệu
             widget: object
@@ -118,16 +122,12 @@ collections:
               - { name: after, label: "Ảnh SAU khi chỉnh màu", widget: image, required: false }
               - { name: demo, label: "Ảnh mẫu (dùng khi chưa có 2 ảnh trên)", widget: image, required: false }
           - name: pricing
-            label: Báo giá & form tư vấn
+            label: Bảng giá tham khảo
             widget: object
+            hint: "Bấm vào một gói trên web sẽ mở popup liên hệ (email, hotline, Zalo) lấy từ mục Liên hệ ở trên."
             fields:
-              - name: formKey
-                label: "Mã nhận form (Web3Forms Access Key)"
-                widget: string
-                required: false
-                hint: "Lấy miễn phí tại web3forms.com: nhập email nhận báo giá → dán mã vào đây. Để trống thì nút gửi sẽ mở email/Zalo cho khách tự gửi."
-              - { name: responseTime, label: "Cam kết phản hồi (VI)", widget: string }
-              - { name: responseTimeEn, label: "Cam kết phản hồi (EN)", widget: string }
+              - { name: note, label: "Ghi chú dưới bảng giá (VI)", widget: text, required: false }
+              - { name: noteEn, label: "Ghi chú dưới bảng giá (EN)", widget: text, required: false }
               - name: packages
                 label: Các gói dịch vụ
                 widget: list
@@ -139,7 +139,7 @@ collections:
                   - { name: descEn, label: "Mô tả ngắn (EN)", widget: string }
                   - { name: price, label: "Giá từ (VI)", widget: string, required: false, hint: "Ví dụ 8.000.000đ. Để trống sẽ hiện 'Báo giá theo yêu cầu'." }
                   - { name: priceEn, label: "Giá từ (EN)", widget: string, required: false, hint: "Ví dụ 8M VND" }
-                  - { name: highlight, label: "Gói nổi bật (viền cam)", widget: boolean, default: false, required: false }
+                  - { name: highlight, label: "Gói được chọn nhiều (nhãn cam)", widget: boolean, default: false, required: false }
                   - { name: includes, label: "Bao gồm (VI)", widget: list, field: { name: item, label: Mục, widget: string } }
                   - { name: includesEn, label: "Bao gồm (EN)", widget: list, required: false, field: { name: item, label: Item, widget: string } }
           - name: texts

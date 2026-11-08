@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Sun, Moon } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Sun, Moon, ChevronDown, Share2 } from 'lucide-react';
 import { Language } from '../types';
+import { translations } from '../data/translations';
+import { ContactCard, SocialCard, panelCls } from './ContactPanels';
 
 interface NavbarProps {
   lang: Language;
@@ -10,6 +12,33 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [open, setOpen] = useState<null | 'contact' | 'share'>(null);
+  const openRef = useRef(open);
+  openRef.current = open;
+  const clusterRef = useRef<HTMLDivElement>(null);
+  const t = translations[lang];
+
+  // Đóng popover khi bấm ra ngoài / nhấn Esc
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: PointerEvent) => {
+      if (clusterRef.current && !clusterRef.current.contains(e.target as Node)) setOpen(null);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(null);
+    document.addEventListener('pointerdown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('pointerdown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
+
+  // Cho phép popup báo giá / nút ở nơi khác mở bảng liên hệ trên menu
+  useEffect(() => {
+    const h = () => setOpen('contact');
+    window.addEventListener('jg:open-contact', h);
+    return () => window.removeEventListener('jg:open-contact', h);
+  }, []);
   const [theme, setTheme] = useState<'dark' | 'light'>(() =>
     typeof document !== 'undefined' && document.documentElement.classList.contains('light') ? 'light' : 'dark'
   );
@@ -42,7 +71,9 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
       setScrolled(currentScrollY > 50);
 
       // Hide on scroll down, show on scroll up
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+      if (openRef.current) {
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 80) {
         setVisible(false);
       } else {
         setVisible(true);
@@ -100,23 +131,16 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
         >
           {lang === 'vi' ? 'Báo giá' : 'Pricing'}
         </button>
-        <button
-          onClick={() => scrollTo('contact')}
-          data-cursor="pointer"
-          className="hover:text-ink transition-colors cursor-pointer"
-        >
-          {lang === 'vi' ? 'Liên hệ' : 'Contact'}
-        </button>
       </nav>
 
       {/* Language Switch */}
-      <div className="flex items-center gap-4">
+      <div ref={clusterRef} className="relative flex items-center gap-2 sm:gap-3">
         <button
           onClick={toggleTheme}
           data-cursor="pointer"
           aria-label={themeLabel}
           title={themeLabel}
-          className="relative w-9 h-9 flex items-center justify-center rounded-full border border-ink/15 text-ink/70 hover:text-[#FF5A1F] hover:border-[#FF5A1F] transition-colors cursor-pointer overflow-hidden"
+          className="relative hidden sm:flex w-9 h-9 items-center justify-center rounded-full border border-ink/15 text-ink/70 hover:text-[#FF5A1F] hover:border-[#FF5A1F] transition-colors cursor-pointer overflow-hidden"
         >
           <Sun
             className={'absolute w-4 h-4 transition-all duration-500 ' + (theme === 'light' ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0')}
@@ -128,10 +152,48 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
         <button
           onClick={onToggleLang}
           data-cursor="pointer"
-          className="text-ink/60 hover:text-[#FF5A1F] transition-colors cursor-pointer font-bold"
+          className="px-1.5 text-ink/60 hover:text-[#FF5A1F] transition-colors cursor-pointer font-bold"
         >
           {lang === 'vi' ? 'EN' : 'VI'}
         </button>
+
+        {/* Liên hệ ⌄ */}
+        <button
+          onClick={() => setOpen(open === 'contact' ? null : 'contact')}
+          data-cursor="pointer"
+          aria-expanded={open === 'contact'}
+          aria-haspopup="dialog"
+          className={`h-9 inline-flex items-center gap-1.5 rounded-full border pl-4 pr-3 text-[11px] font-semibold transition-colors cursor-pointer ${
+            open === 'contact' ? 'border-[#FF5A1F] text-[#FF5A1F]' : 'border-ink/15 text-ink/80 hover:border-ink/40 hover:text-ink'
+          }`}
+        >
+          {t.nav_contact}
+          <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${open === 'contact' ? 'rotate-180' : ''}`} />
+        </button>
+
+        {/* Chia sẻ / mạng xã hội */}
+        <button
+          onClick={() => setOpen(open === 'share' ? null : 'share')}
+          data-cursor="pointer"
+          aria-expanded={open === 'share'}
+          aria-haspopup="dialog"
+          aria-label={t.sp_title}
+          className={`w-9 h-9 grid place-items-center rounded-full border transition-colors cursor-pointer ${
+            open === 'share' ? 'border-[#FF5A1F] text-[#FF5A1F]' : 'border-ink/15 text-ink/70 hover:border-ink/40 hover:text-ink'
+          }`}
+        >
+          <Share2 className="w-4 h-4" strokeWidth={1.8} />
+        </button>
+
+        {open && (
+          <div
+            role="dialog"
+            data-lenis-prevent
+            className={`jg-pop absolute right-0 top-[calc(100%+14px)] w-[min(340px,calc(100vw-32px))] ${panelCls}`}
+          >
+            {open === 'contact' ? <ContactCard lang={lang} /> : <SocialCard lang={lang} />}
+          </div>
+        )}
       </div>
     </header>
   );

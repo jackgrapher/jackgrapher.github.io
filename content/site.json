@@ -1,11 +1,15 @@
 {
   "contact": {
-    "phone": "abcd",
+    "phone": "0900 000 000",
     "zalo": "",
-    "email": "[EMAIL]",
+    "email": "hello@jackgrapher.vn",
+    "hours": "Thứ Hai – Chủ Nhật · 8:00 – 21:00",
+    "hoursEn": "Mon – Sun · 8:00 – 21:00",
     "cities": "Sài Gòn · Hà Nội",
-    "facebook": "https://facebook.com",
-    "instagram": "https://instagram.com"
+    "facebook": "https://www.facebook.com/jackgrapher",
+    "instagram": "https://www.instagram.com/jackgrapher",
+    "youtube": "https://www.youtube.com/@jackgrapher",
+    "tiktok": "https://www.tiktok.com/@jackgrapher"
   },
   "metrics": {
     "events": 500
@@ -34,9 +38,8 @@
     }
   },
   "pricing": {
-    "formKey": "",
-    "responseTime": "Phản hồi trong 2 giờ làm việc",
-    "responseTimeEn": "Reply within 2 working hours",
+    "note": "Giá tham khảo, chưa gồm VAT và chi phí di chuyển ngoài thành phố. Báo giá chính xác theo quy mô thực tế.",
+    "noteEn": "Indicative pricing, excluding VAT and out-of-town travel. Final quote depends on actual scope.",
     "packages": [
       {
         "name": "Sự kiện & Doanh nghiệp",

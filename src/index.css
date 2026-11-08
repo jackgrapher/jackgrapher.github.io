@@ -231,3 +231,11 @@ html.theme-anim *::after {
     transition: none;
   }
 }
+
+/* Popover / modal xuất hiện mượt */
+@keyframes jgPop {
+  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.jg-pop { animation: jgPop 0.22s cubic-bezier(0.2, 0.7, 0.2, 1) both; transform-origin: top right; }
+@media (prefers-reduced-motion: reduce) { .jg-pop { animation: none; } }
