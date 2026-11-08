@@ -1,27 +1,29 @@
 {
-  "order": 10,
+  "title": "SEARCHINF@RM Khai trương văn phòng tại Việt Nam",
+  "titleEn": "SEARCHINF@RM Opens Office in Vietnam",
   "category": "event",
   "mediaType": "photo",
-  "title": "Masterise Annual Gala",
-  "titleEn": "Masterise Annual Gala",
   "client": "Masterise Group",
   "location": "GEM Center · Sài Gòn",
   "city": "saigon",
   "year": "2026",
-  "description": "Ghi lại đêm gala thường niên với hơn 800 khách mời — từ thảm đỏ, sân khấu đến những khoảnh khắc tự nhiên bên lề.",
-  "descriptionEn": "Annual gala night for 800+ guests — red carpet, stage and candid moments in between.",
-  "tags": [
-    "gala",
-    "corporate",
-    "stage"
-  ],
   "featured": true,
-  "thumbnailUrl": "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop",
+  "order": 10,
+  "aspect": "landscape",
+  "thumbnailUrl": "/uploads/891753746_3198198947043599_570889518239630809_n.jpg",
   "highResUrl": "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1800&auto=format&fit=crop",
   "gallery": [
     "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1800&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80&w=1800&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1800&auto=format&fit=crop"
   ],
-  "aspect": "landscape"
+  "videoUrl": "",
+  "duration": "",
+  "description": "Ghi lại đêm gala thường niên với hơn 800 khách mời — từ thảm đỏ, sân khấu đến những khoảnh khắc tự nhiên bên lề.",
+  "descriptionEn": "Annual gala night for 800+ guests — red carpet, stage and candid moments in between.",
+  "tags": [
+    "gala",
+    "corporate",
+    "stage"
+  ]
 }
