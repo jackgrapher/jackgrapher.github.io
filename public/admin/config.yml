@@ -76,7 +76,7 @@ collections:
           - { label: "Vuông", value: square }
       - { name: thumbnailUrl, label: "Ảnh bìa", widget: image, hint: "Tải ảnh lên hoặc dán link. Nên ≤ 1 MB, rộng ~1200px." }
       - { name: highResUrl, label: "Ảnh bìa độ phân giải cao (tuỳ chọn)", widget: image, required: false, hint: "Để trống sẽ dùng ảnh bìa." }
-      - { name: gallery, label: "Bộ ảnh (cho dự án Ảnh)", widget: list, required: false, field: { name: image, label: Ảnh, widget: image } }
+      - { name: gallery, label: "Bộ ảnh (cho dự án Ảnh)", widget: image, multiple: true, required: false, hint: "Chọn hoặc kéo-thả nhiều ảnh cùng lúc. Kéo để sắp xếp thứ tự. Nên ≤ 1 MB mỗi ảnh." }
       - { name: videoUrl, label: "Link video (cho dự án Video)", widget: string, required: false, hint: "Nên dùng link YouTube (youtube.com/watch?v=… hoặc youtu.be/…) hoặc link .mp4. Không tải file video lên đây vì repo giới hạn dung lượng." }
       - { name: duration, label: "Thời lượng video", widget: string, required: false, hint: "Ví dụ 02:48" }
       - { name: description, label: "Mô tả (VI)", widget: text, required: false }
