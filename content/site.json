@@ -32,5 +32,75 @@
       "works_desc": "Photo and film from events, weddings, brand campaigns and live music. Filter by group, format, city or year.",
       "contact_sub": "Saigon · Hanoi · Available nationwide."
     }
+  },
+  "pricing": {
+    "formKey": "",
+    "responseTime": "Phản hồi trong 2 giờ làm việc",
+    "responseTimeEn": "Reply within 2 working hours",
+    "packages": [
+      {
+        "name": "Sự kiện & Doanh nghiệp",
+        "nameEn": "Events & Corporate",
+        "desc": "Gala, hội nghị, ra mắt sản phẩm, tiệc tất niên.",
+        "descEn": "Galas, conferences, product launches, year-end parties.",
+        "price": "",
+        "priceEn": "",
+        "highlight": true,
+        "includes": [
+          "Nhiếp ảnh + quay phim đa máy",
+          "Teaser giao trong ngày",
+          "Phim highlight 4K",
+          "Ảnh chỉnh màu toàn bộ"
+        ],
+        "includesEn": [
+          "Multi-cam photo + film crew",
+          "Same-day teaser",
+          "4K highlight film",
+          "Fully colour-graded photos"
+        ]
+      },
+      {
+        "name": "Cưới",
+        "nameEn": "Weddings",
+        "desc": "Phóng sự cưới, pre-wedding, elopement.",
+        "descEn": "Wedding day, pre-wedding, elopement.",
+        "price": "",
+        "priceEn": "",
+        "highlight": false,
+        "includes": [
+          "Phóng sự ảnh trọn ngày",
+          "Phim cưới phong cách điện ảnh",
+          "Teaser 60 giây cho mạng xã hội",
+          "Album ảnh online"
+        ],
+        "includesEn": [
+          "Full-day photo coverage",
+          "Cinematic wedding film",
+          "60-second social teaser",
+          "Online photo album"
+        ]
+      },
+      {
+        "name": "Thương hiệu & Âm nhạc",
+        "nameEn": "Brand & Music",
+        "desc": "Chiến dịch thương hiệu, concert, festival.",
+        "descEn": "Brand campaigns, concerts, festivals.",
+        "price": "",
+        "priceEn": "",
+        "highlight": false,
+        "includes": [
+          "Lên ý tưởng & khung hình",
+          "Brand film / aftermovie",
+          "Bản dọc 9:16 cho TikTok, Reels",
+          "Ảnh campaign chỉnh màu"
+        ],
+        "includesEn": [
+          "Concept & shot planning",
+          "Brand film / aftermovie",
+          "Vertical 9:16 cuts for TikTok, Reels",
+          "Graded campaign photos"
+        ]
+      }
+    ]
   }
 }

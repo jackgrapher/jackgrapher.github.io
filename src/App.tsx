@@ -10,6 +10,7 @@ import { Hero } from './components/Hero';
 import { Manifesto } from './components/Manifesto';
 import { Works } from './components/Works';
 import { ColorBeforeAfter } from './components/ColorBeforeAfter';
+import { Pricing } from './components/Pricing';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { LightboxModal } from './components/LightboxModal';
@@ -111,6 +112,9 @@ export default function App() {
 
         {/* 4. Color Science: Minimalist Before/After Slider */}
         <ColorBeforeAfter lang={lang} />
+
+        {/* 5. Pricing: Gói dịch vụ + form nhận báo giá */}
+        <Pricing lang={lang} />
 
         {/* 5. Contact: Massive "LET'S SHOOT." + Zalo Action Button */}
         <Contact lang={lang} />

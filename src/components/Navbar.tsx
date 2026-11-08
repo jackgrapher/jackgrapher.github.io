@@ -94,6 +94,13 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
           {lang === 'vi' ? 'Tác phẩm' : 'Works'}
         </button>
         <button
+          onClick={() => scrollTo('pricing')}
+          data-cursor="pointer"
+          className="hover:text-ink transition-colors cursor-pointer"
+        >
+          {lang === 'vi' ? 'Báo giá' : 'Pricing'}
+        </button>
+        <button
           onClick={() => scrollTo('contact')}
           data-cursor="pointer"
           className="hover:text-ink transition-colors cursor-pointer"
