@@ -1,6 +1,12 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Language } from '../types';
 import { translations } from '../data/translations';
+import { site } from '../data/site';
+
+// Có đủ ảnh Trước + Sau thật trong /admin thì dùng ảnh thật; chưa có thì dùng ảnh mẫu + bộ lọc giả lập
+const REAL = !!(site.grading.before && site.grading.after);
+const BEFORE_SRC = REAL ? site.grading.before : site.grading.demo;
+const AFTER_SRC = REAL ? site.grading.after : site.grading.demo;
 
 interface ColorBeforeAfterProps {
   lang: Language;
@@ -62,10 +68,10 @@ export const ColorBeforeAfter: React.FC<ColorBeforeAfterProps> = ({ lang }) => {
         {/* Layer 1: Flat S-Log3 Original */}
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1800&auto=format&fit=crop"
+            src={BEFORE_SRC}
             alt="Before"
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover filter grayscale-[88%] brightness-[0.92] contrast-[0.70]"
+            className={`w-full h-full object-cover ${REAL ? '' : 'filter grayscale-[88%] brightness-[0.92] contrast-[0.70]'}`}
           />
           <span className="absolute bottom-6 right-6 font-sans text-xs tracking-widest text-white/70 uppercase">
             {t.grading_before}
@@ -85,10 +91,10 @@ export const ColorBeforeAfter: React.FC<ColorBeforeAfterProps> = ({ lang }) => {
             }}
           >
             <img
-              src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1800&auto=format&fit=crop"
+              src={AFTER_SRC}
               alt="After"
               referrerPolicy="no-referrer"
-              className="w-full h-full object-cover filter contrast-[1.28] saturate-[1.4] brightness-[1.02]"
+              className={`w-full h-full object-cover ${REAL ? '' : 'filter contrast-[1.28] saturate-[1.4] brightness-[1.02]'}`}
             />
           </div>
 

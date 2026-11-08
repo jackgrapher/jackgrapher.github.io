@@ -1,0 +1,25 @@
+{
+  "order": 50,
+  "category": "brand",
+  "mediaType": "photo",
+  "title": "Saigon Fashion Week Runway",
+  "titleEn": "Saigon Fashion Week Runway",
+  "location": "White Palace · Sài Gòn",
+  "city": "saigon",
+  "year": "2026",
+  "description": "Ảnh runway và backstage cho tuần lễ thời trang, chỉnh màu thống nhất toàn bộ bộ sưu tập.",
+  "descriptionEn": "Runway and backstage coverage with a consistent grade across the collection.",
+  "tags": [
+    "fashion",
+    "runway",
+    "backstage"
+  ],
+  "thumbnailUrl": "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1200&auto=format&fit=crop",
+  "highResUrl": "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1800&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1800&auto=format&fit=crop"
+  ],
+  "aspect": "portrait"
+}

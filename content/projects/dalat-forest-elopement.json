@@ -1,0 +1,25 @@
+{
+  "order": 60,
+  "category": "wedding",
+  "mediaType": "photo",
+  "title": "Pine Forest Elopement",
+  "titleEn": "Pine Forest Elopement",
+  "location": "Đà Lạt",
+  "city": "other",
+  "year": "2025",
+  "description": "Buổi elopement nhỏ giữa rừng thông Đà Lạt, ánh sáng tự nhiên và sương sớm.",
+  "descriptionEn": "An intimate elopement in the Da Lat pine forest, natural light and morning mist.",
+  "tags": [
+    "elopement",
+    "outdoor",
+    "natural light"
+  ],
+  "thumbnailUrl": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&auto=format&fit=crop",
+  "highResUrl": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1800&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=1800&auto=format&fit=crop"
+  ],
+  "aspect": "landscape"
+}

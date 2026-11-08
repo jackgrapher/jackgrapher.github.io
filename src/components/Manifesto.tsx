@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Language } from '../types';
 import { translations } from '../data/translations';
+import { site } from '../data/site';
 
 interface ManifestoProps {
   lang: Language;
@@ -33,7 +34,7 @@ export const Manifesto: React.FC<ManifestoProps> = ({ lang }) => {
   useEffect(() => {
     if (!inView) return;
     let current = 0;
-    const target = 500;
+    const target = Number(site.metrics.events) || 500;
     const step = Math.ceil(target / 40);
     const interval = setInterval(() => {
       current += step;
@@ -82,7 +83,7 @@ export const Manifesto: React.FC<ManifestoProps> = ({ lang }) => {
           }`}
         >
           <div className="font-display text-5xl sm:text-6xl font-bold text-ink">
-            {counts.events > 0 ? counts.events : 500}<span className="text-[#FF5A1F]">+</span>
+            {counts.events > 0 ? counts.events : site.metrics.events}<span className="text-[#FF5A1F]">+</span>
           </div>
           <div className="font-sans text-xs tracking-widest text-ink/50 uppercase mt-2">
             {t.metric_events}

@@ -1,0 +1,36 @@
+{
+  "contact": {
+    "phone": "[SỐ ĐIỆN THOẠI]",
+    "zalo": "",
+    "email": "[EMAIL]",
+    "cities": "Sài Gòn · Hà Nội",
+    "facebook": "https://facebook.com",
+    "instagram": "https://instagram.com"
+  },
+  "metrics": {
+    "events": 500
+  },
+  "grading": {
+    "before": "",
+    "after": "",
+    "demo": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1800&auto=format&fit=crop"
+  },
+  "texts": {
+    "vi": {
+      "hero_title_1": "BẮT TRỌN",
+      "hero_title_2": "khoảnh khắc.",
+      "hero_sub": "Nhiếp ảnh & Phim sự kiện — Sài Gòn · Hà Nội",
+      "manifesto": "Mỗi khoảnh khắc chỉ đến một lần.",
+      "works_desc": "Ảnh và phim từ các sự kiện, đám cưới, chiến dịch thương hiệu và đêm nhạc. Lọc theo nhóm, định dạng, thành phố hoặc năm.",
+      "contact_sub": "Sài Gòn · Hà Nội · Nhận ghi hình toàn quốc."
+    },
+    "en": {
+      "hero_title_1": "CAPTURE",
+      "hero_title_2": "the moment.",
+      "hero_sub": "Event Photo & Film — Saigon · Hanoi",
+      "manifesto": "Every moment only comes once.",
+      "works_desc": "Photo and film from events, weddings, brand campaigns and live music. Filter by group, format, city or year.",
+      "contact_sub": "Saigon · Hanoi · Available nationwide."
+    }
+  }
+}

@@ -1,4 +1,6 @@
-export const translations = {
+import { site } from './site';
+
+const base = {
   vi: {
     hero_title_1: 'BẮT TRỌN',
     hero_title_2: 'khoảnh khắc.',
@@ -115,4 +117,10 @@ export const translations = {
     btn_zalo: 'Chat via Zalo',
     footer_rights: '© 2026 JACKGRAPHER. All rights reserved.',
   },
+};
+
+/** Chữ mặc định + phần chữ chỉnh được trong /admin (content/site.json → texts) */
+export const translations = {
+  vi: { ...base.vi, ...site.texts.vi },
+  en: { ...base.en, ...site.texts.en },
 };

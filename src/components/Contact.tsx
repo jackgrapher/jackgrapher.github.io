@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Language } from '../types';
 import { translations } from '../data/translations';
+import { contact } from '../data/site';
 
 interface ContactProps {
   lang: Language;
@@ -35,7 +36,7 @@ export const Contact: React.FC<ContactProps> = ({ lang }) => {
         {/* 1 Single Orange Button: Nhắn Zalo with https://zalo.me/[SỐ ĐIỆN THOẠI] */}
         <div>
           <a
-            href="https://zalo.me/[SỐ ĐIỆN THOẠI]"
+            href={contact.zaloUrl}
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="pointer"

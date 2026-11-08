@@ -1,0 +1,24 @@
+{
+  "order": 40,
+  "category": "brand",
+  "mediaType": "video",
+  "title": "VinFast Global EV Reveal",
+  "titleEn": "VinFast Global EV Reveal",
+  "client": "VinFast",
+  "location": "Trung tâm Hội nghị Quốc gia · Hà Nội",
+  "city": "hanoi",
+  "year": "2026",
+  "duration": "01:30",
+  "description": "Phim highlight sự kiện ra mắt sản phẩm, dựng bản dọc cho social ngay trong ngày.",
+  "descriptionEn": "Launch event highlight film with same-day vertical cuts for social.",
+  "tags": [
+    "launch",
+    "automotive",
+    "highlight"
+  ],
+  "featured": true,
+  "thumbnailUrl": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop",
+  "highResUrl": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1800&auto=format&fit=crop",
+  "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+  "aspect": "landscape"
+}

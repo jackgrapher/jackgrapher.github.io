@@ -1,0 +1,22 @@
+{
+  "order": 30,
+  "category": "wedding",
+  "mediaType": "video",
+  "title": "Sunset Wedding — Khang & My",
+  "titleEn": "Sunset Wedding — Khang & My",
+  "location": "Phú Quốc",
+  "city": "other",
+  "year": "2025",
+  "duration": "04:12",
+  "description": "Phim cưới phong cách điện ảnh trong ánh hoàng hôn trên biển Phú Quốc.",
+  "descriptionEn": "A cinematic wedding film at golden hour on Phu Quoc beach.",
+  "tags": [
+    "wedding film",
+    "beach",
+    "destination"
+  ],
+  "thumbnailUrl": "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop",
+  "highResUrl": "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1800&auto=format&fit=crop",
+  "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+  "aspect": "portrait"
+}

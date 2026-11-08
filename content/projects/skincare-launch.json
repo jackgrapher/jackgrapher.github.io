@@ -1,0 +1,22 @@
+{
+  "order": 110,
+  "category": "brand",
+  "mediaType": "video",
+  "title": "Skincare Launch Campaign",
+  "titleEn": "Skincare Launch Campaign",
+  "location": "Studio · Sài Gòn",
+  "city": "saigon",
+  "year": "2024",
+  "duration": "00:45",
+  "description": "TVC ngắn và bộ cutdown 15s cho chiến dịch ra mắt sản phẩm chăm sóc da.",
+  "descriptionEn": "Short TVC plus 15s cutdowns for a skincare product launch.",
+  "tags": [
+    "tvc",
+    "beauty",
+    "studio"
+  ],
+  "thumbnailUrl": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?q=80&w=1200&auto=format&fit=crop",
+  "highResUrl": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?q=80&w=1800&auto=format&fit=crop",
+  "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+  "aspect": "landscape"
+}

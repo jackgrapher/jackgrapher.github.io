@@ -1,0 +1,22 @@
+{
+  "order": 90,
+  "category": "event",
+  "mediaType": "video",
+  "title": "Year End Party 2025",
+  "titleEn": "Year End Party 2025",
+  "location": "Riverside Palace · Sài Gòn",
+  "city": "saigon",
+  "year": "2025",
+  "duration": "03:05",
+  "description": "Recap tiệc tất niên doanh nghiệp: biểu diễn, trao giải và khoảnh khắc của nhân viên.",
+  "descriptionEn": "Company year-end party recap: performances, awards and team moments.",
+  "tags": [
+    "recap",
+    "yep",
+    "corporate"
+  ],
+  "thumbnailUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop",
+  "highResUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1800&auto=format&fit=crop",
+  "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+  "aspect": "landscape"
+}

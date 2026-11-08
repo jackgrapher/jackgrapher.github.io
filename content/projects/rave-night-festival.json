@@ -1,0 +1,23 @@
+{
+  "order": 20,
+  "category": "concert",
+  "mediaType": "video",
+  "title": "Rave Night Music Festival",
+  "titleEn": "Rave Night Festival",
+  "location": "Sân khấu ngoài trời · Sài Gòn",
+  "city": "saigon",
+  "year": "2026",
+  "duration": "02:48",
+  "description": "Aftermovie nhịp nhanh cho lễ hội âm nhạc ngoài trời, quay đa máy và giao teaser trong đêm.",
+  "descriptionEn": "Fast-cut aftermovie for an outdoor festival, multi-cam with an overnight teaser.",
+  "tags": [
+    "aftermovie",
+    "festival",
+    "edm"
+  ],
+  "featured": true,
+  "thumbnailUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200&auto=format&fit=crop",
+  "highResUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1800&auto=format&fit=crop",
+  "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+  "aspect": "portrait"
+}

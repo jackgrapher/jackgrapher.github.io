@@ -1,5 +1,6 @@
 import React from 'react';
 import { translations } from '../data/translations';
+import { contact } from '../data/site';
 import { Language } from '../types';
 
 interface FooterProps {
@@ -13,11 +14,19 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
     <footer className="border-t border-ink/10 py-12 px-6 sm:px-12 max-w-7xl mx-auto font-sans text-xs tracking-widest text-ink/50 uppercase">
       {/* Contact Info Line */}
       <div className="pb-8 mb-8 border-b border-ink/5 text-center sm:text-left text-ink/70 font-sans tracking-widest text-[11px] sm:text-xs">
-        <span>Hotline/Zalo: [SỐ ĐIỆN THOẠI]</span>
-        <span className="mx-2 text-[#FF5A1F]">·</span>
-        <span>Email: [EMAIL]</span>
-        <span className="mx-2 text-[#FF5A1F]">·</span>
-        <span>Sài Gòn · Hà Nội</span>
+        {contact.hasPhone && (
+          <>
+            <a href={contact.telUrl} data-cursor="pointer" className="hover:text-ink transition-colors">Hotline/Zalo: {contact.phone}</a>
+            <span className="mx-2 text-[#FF5A1F]">·</span>
+          </>
+        )}
+        {contact.hasEmail && (
+          <>
+            <a href={`mailto:${contact.email}`} data-cursor="pointer" className="normal-case hover:text-ink transition-colors">{contact.email}</a>
+            <span className="mx-2 text-[#FF5A1F]">·</span>
+          </>
+        )}
+        <span>{contact.cities}</span>
       </div>
 
       {/* Main Bar: Logo, Socials, 1-Line Copyright */}
@@ -28,7 +37,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
 
         <div className="flex items-center gap-6 sm:gap-8">
           <a
-            href="https://facebook.com"
+            href={contact.facebook}
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="pointer"
@@ -37,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
             Facebook
           </a>
           <a
-            href="https://instagram.com"
+            href={contact.instagram}
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="pointer"
@@ -46,7 +55,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
             Instagram
           </a>
           <a
-            href="https://zalo.me/[SỐ ĐIỆN THOẠI]"
+            href={contact.zaloUrl}
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="pointer"
@@ -57,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
         </div>
 
         <div className="whitespace-nowrap text-[11px] text-ink/40">
-          © 2026 JACKGRAPHER. ALL RIGHTS RESERVED.
+          © {new Date().getFullYear()} JACKGRAPHER. ALL RIGHTS RESERVED.
         </div>
       </div>
     </footer>

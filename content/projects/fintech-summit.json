@@ -1,0 +1,25 @@
+{
+  "order": 70,
+  "category": "event",
+  "mediaType": "photo",
+  "title": "Fintech Leadership Summit",
+  "titleEn": "Fintech Leadership Summit",
+  "location": "Lotte Center · Hà Nội",
+  "city": "hanoi",
+  "year": "2025",
+  "description": "Hội nghị 2 ngày: diễn giả, panel, networking — giao ảnh chọn lọc sau mỗi phiên.",
+  "descriptionEn": "Two-day summit: keynotes, panels, networking — curated photos after every session.",
+  "tags": [
+    "conference",
+    "keynote",
+    "corporate"
+  ],
+  "thumbnailUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop",
+  "highResUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1800&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80&w=1800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1800&auto=format&fit=crop"
+  ],
+  "aspect": "landscape"
+}

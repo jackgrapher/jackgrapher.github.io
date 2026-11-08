@@ -1,0 +1,137 @@
+# Trang quản trị JACKGRAPHER (Sveltia CMS)
+# Mỗi lần bấm "Save" = 1 commit lên GitHub → GitHub Actions tự build → web cập nhật sau ~1–2 phút.
+
+backend:
+  name: github
+  repo: jackgrapher/jackgrapher.github.io
+  branch: main
+  commit_messages:
+    create: "Thêm {{collection}}: {{slug}}"
+    update: "Cập nhật {{collection}}: {{slug}}"
+    delete: "Xoá {{collection}}: {{slug}}"
+    uploadMedia: "Tải lên {{path}}"
+    deleteMedia: "Xoá file {{path}}"
+
+site_url: https://jackgrapher.github.io
+display_url: https://jackgrapher.github.io
+logo_url: /favicon.svg
+
+# Ảnh tải lên được lưu trong repo, phục vụ tại /uploads/...
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  # ───────────────────────── DỰ ÁN ─────────────────────────
+  - name: projects
+    label: Dự án
+    label_singular: dự án
+    description: "Các dự án hiển thị ở mục DỰ ÁN tiêu biểu. Số thứ tự nhỏ hiện trước."
+    folder: content/projects
+    format: json
+    extension: json
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{order}} · {{title}} — {{location}} ({{year}})"
+    sortable_fields: [order, title, year]
+    view_groups:
+      - { label: Nhóm, field: category }
+    fields:
+      - { name: title, label: "Tên dự án (VI)", widget: string }
+      - { name: titleEn, label: "Tên dự án (EN)", widget: string }
+      - name: category
+        label: Nhóm
+        widget: select
+        options:
+          - { label: "Sự kiện", value: event }
+          - { label: "Cưới", value: wedding }
+          - { label: "Thương hiệu", value: brand }
+          - { label: "Âm nhạc", value: concert }
+      - name: mediaType
+        label: Định dạng
+        widget: select
+        options:
+          - { label: "Ảnh", value: photo }
+          - { label: "Video", value: video }
+      - { name: client, label: "Khách hàng", widget: string, required: false }
+      - { name: location, label: "Địa điểm", widget: string, hint: "Ví dụ: GEM Center · Sài Gòn" }
+      - name: city
+        label: Thành phố (dùng cho bộ lọc)
+        widget: select
+        options:
+          - { label: "Sài Gòn", value: saigon }
+          - { label: "Hà Nội", value: hanoi }
+          - { label: "Tỉnh khác", value: other }
+      - { name: year, label: "Năm", widget: string, pattern: ['^\d{4}$', "Nhập 4 chữ số, ví dụ 2026"] }
+      - { name: featured, label: "Nổi bật", widget: boolean, default: false, required: false }
+      - { name: order, label: "Thứ tự hiển thị", widget: number, value_type: int, default: 100, hint: "Số nhỏ hiện trước (10, 20, 30…)" }
+      - name: aspect
+        label: Khung ảnh bìa
+        widget: select
+        default: landscape
+        options:
+          - { label: "Ngang", value: landscape }
+          - { label: "Dọc", value: portrait }
+          - { label: "Vuông", value: square }
+      - { name: thumbnailUrl, label: "Ảnh bìa", widget: image, hint: "Tải ảnh lên hoặc dán link. Nên ≤ 1 MB, rộng ~1200px." }
+      - { name: highResUrl, label: "Ảnh bìa độ phân giải cao (tuỳ chọn)", widget: image, required: false, hint: "Để trống sẽ dùng ảnh bìa." }
+      - { name: gallery, label: "Bộ ảnh (cho dự án Ảnh)", widget: list, required: false, field: { name: image, label: Ảnh, widget: image } }
+      - { name: videoUrl, label: "Link video (cho dự án Video)", widget: string, required: false, hint: "Nên dùng link YouTube (youtube.com/watch?v=… hoặc youtu.be/…) hoặc link .mp4. Không tải file video lên đây vì repo giới hạn dung lượng." }
+      - { name: duration, label: "Thời lượng video", widget: string, required: false, hint: "Ví dụ 02:48" }
+      - { name: description, label: "Mô tả (VI)", widget: text, required: false }
+      - { name: descriptionEn, label: "Mô tả (EN)", widget: text, required: false }
+      - { name: tags, label: "Từ khoá tìm kiếm", widget: list, required: false, hint: "Cách nhau bằng dấu phẩy" }
+
+  # ───────────────────────── THÔNG TIN CHUNG ─────────────────────────
+  - name: settings
+    label: Thông tin chung
+    editor:
+      preview: false
+    files:
+      - name: site
+        label: Liên hệ, số liệu & chữ trên trang
+        file: content/site.json
+        format: json
+        fields:
+          - name: contact
+            label: Liên hệ
+            widget: object
+            fields:
+              - { name: phone, label: "Số điện thoại / Hotline", widget: string, hint: "Ví dụ 0901 234 567" }
+              - { name: zalo, label: "Zalo (tuỳ chọn)", widget: string, required: false, hint: "Để trống sẽ dùng số điện thoại. Có thể dán link zalo.me/…" }
+              - { name: email, label: "Email", widget: string }
+              - { name: cities, label: "Khu vực hoạt động", widget: string }
+              - { name: facebook, label: "Link Facebook", widget: string }
+              - { name: instagram, label: "Link Instagram", widget: string }
+          - name: metrics
+            label: Số liệu
+            widget: object
+            fields:
+              - { name: events, label: "Số sự kiện đã ghi hình", widget: number, value_type: int }
+          - name: grading
+            label: Hậu kỳ màu (ảnh Trước / Sau)
+            widget: object
+            hint: "Tải đủ cả 2 ảnh thật (cùng khung hình) để thay ảnh mẫu."
+            fields:
+              - { name: before, label: "Ảnh TRƯỚC khi chỉnh màu", widget: image, required: false }
+              - { name: after, label: "Ảnh SAU khi chỉnh màu", widget: image, required: false }
+              - { name: demo, label: "Ảnh mẫu (dùng khi chưa có 2 ảnh trên)", widget: image, required: false }
+          - name: texts
+            label: Chữ trên trang
+            widget: object
+            fields:
+              - name: vi
+                label: Tiếng Việt
+                widget: object
+                fields: &textFields
+                  - { name: hero_title_1, label: "Tiêu đề Hero — dòng 1 (chữ đậm)", widget: string }
+                  - { name: hero_title_2, label: "Tiêu đề Hero — dòng 2 (chữ nghiêng)", widget: string }
+                  - { name: hero_sub, label: "Dòng phụ Hero", widget: string }
+                  - { name: manifesto, label: "Câu tuyên ngôn", widget: string, hint: "Từ cuối sẽ in nghiêng." }
+                  - { name: works_desc, label: "Mô tả mục Dự án", widget: text }
+                  - { name: contact_sub, label: "Dòng phụ mục Liên hệ", widget: string }
+              - name: en
+                label: English
+                widget: object
+                fields: *textFields

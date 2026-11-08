@@ -1,0 +1,25 @@
+{
+  "order": 100,
+  "category": "wedding",
+  "mediaType": "photo",
+  "title": "Garden Wedding — Minh & Lan",
+  "titleEn": "Garden Wedding — Minh & Lan",
+  "location": "Tây Hồ · Hà Nội",
+  "city": "hanoi",
+  "year": "2024",
+  "description": "Tiệc cưới sân vườn ấm áp, phong cách phóng sự tự nhiên.",
+  "descriptionEn": "A warm garden wedding in a natural documentary style.",
+  "tags": [
+    "garden",
+    "documentary",
+    "wedding"
+  ],
+  "thumbnailUrl": "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=1200&auto=format&fit=crop",
+  "highResUrl": "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=1800&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=1800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1800&auto=format&fit=crop"
+  ],
+  "aspect": "landscape"
+}
