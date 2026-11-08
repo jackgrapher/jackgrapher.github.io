@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JACKGRAPHER // Visual Identity & Event Cinematography (BTQ Standard)</title>
+    
+    <!-- FONT CHỮ CHUẨN QUỐC TẾ - 100% TIẾNG VIỆT & TIẾNG ANH KHÔNG LỖI DẤU -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --orange: #FF5500;
+            --orange-glow: rgba(255, 85, 0, 0.4);
+            --cyan: #00F2FE;
+            --cyan-glow: rgba(0, 242, 254, 0.4);
+            
+            /* DARK MODE (AGENCY MIDNIGHT) */
+            --bg: #080A0F;
+            --surface: #0E121A;
+            --surface-hover: #141A26;
+            --text-main: #F4F7FC;
+            --text-sub: #7A899E;
+            --border: rgba(255, 255, 255, 0.1);
+            --hairline: rgba(255, 255, 255, 0.06);
+            --glass: rgba(8, 10, 15, 0.85);
+        }
+
+        [data-theme="light"] {
+            /* LIGHT MODE (BTQ STUDIO WHITE) */
+            --bg: #F7F8FA;
+            --surface: #FFFFFF;
+            --surface-hover: #EEF2F8;
+            --text-main: #0B0E14;
+            --text-sub: #5E6D82;
+            --border: rgba(0, 0, 0, 0.1);
+            --hairline: rgba(0, 0, 0, 0.05);
+            --glass: rgba(247, 248, 250, 0.9);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* 1. HEADER CHUẨN BTQ: TỐI GIẢN & ĐẲNG CẤP */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 22px 6%; backdrop-filter: blur(25px);
+            background: var(--glass); border-bottom: 1px solid var(--border);
+        }
+        .logo-wrap { display: flex; align-items: center; gap: 12px; }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: 2px; }
+        .logo span.o { color: var(--orange); }
+        .logo span.c { color: var(--cyan); }
+        .logo-sub { font-size: 10px; font-weight: 700; color: var(--text-sub); letter-spacing: 1.5px; border-left: 1px solid var(--border); padding-left: 12px; }
+
+        nav a { color: var(--text-sub); text-decoration: none; margin: 0 16px; font-size: 13px; font-weight: 600; transition: 0.2s; }
+        nav a:hover { color: var(--text-main); }
+
+        .header-actions { display: flex; align-items: center; gap: 10px; }
+        .btn-ctrl {
+            background: var(--surface); border: 1px solid var(--border);
+            color: var(--text-main); padding: 7px 15px; border-radius: 20px;
+            font-size: 11px; font-weight: 700; cursor: pointer; transition: 0.25s;
+        }
+        .btn-ctrl:hover { border-color: var(--cyan); }
+
+        .btn-quote-header {
+            background: var(--orange); color: #fff; border: none; padding: 10px 24px;
+            border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; cursor: pointer; transition: 0.3s;
+            box-shadow: 0 0 20px var(--orange-glow);
+        }
+        .btn-quote-header:hover { transform: scale(1.05); }
+
+        /* 2. HERO: KINETIC TYPOGRAPHY ĐẬM CHẤT BTQ AGENCY */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            padding: 140px 6% 60px; position: relative;
+            background: radial-gradient(circle at 75% 25%, rgba(0, 242, 254, 0.08) 0%, rgba(255, 85, 0, 0.05) 30%, transparent 65%);
+        }
+        .hero-meta {
+            display: flex; gap: 20px; align-items: center; font-family: 'Space Grotesk'; font-size: 12px;
+            color: var(--cyan); font-weight: 700; letter-spacing: 2px; margin-bottom: 25px;
+        }
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif; font-size: clamp(40px, 7.5vw, 100px);
+            font-weight: 800; line-height: 1.0; letter-spacing: -2px; margin-bottom: 30px;
+        }
+        .hero-title span.outline {
+            color: transparent; -webkit-text-stroke: 1.5px var(--text-main);
+        }
+        .hero-title span.o { color: var(--orange); }
+        .hero-bottom-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: flex-end; margin-top: 20px; }
+        .hero-desc { color: var(--text-sub); font-size: 18px; line-height: 1.6; max-width: 600px; }
+
+        /* 3. MARQUEE TICKER PHONG CÁCH BTQ */
+        .marquee-strip {
+            width: 100%; overflow: hidden; white-space: nowrap; padding: 16px 0;
+            background: var(--surface); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+        }
+        .marquee-inner { display: inline-block; animation: loopMarquee 26s linear infinite; }
+        .marquee-text { display: inline-block; font-family: 'Space Grotesk'; font-size: 14px; font-weight: 800; color: var(--text-sub); margin: 0 30px; letter-spacing: 2px; }
+        .marquee-text span { color: var(--cyan); }
+        @keyframes loopMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* 4. LỜI NGỎ CỦA ĐẠO DIỄN (EDITORIAL STATEMENT CỦA BTQ) */
+        .statement-section { padding: 100px 6%; max-width: 1360px; margin: auto; }
+        .statement-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; }
+        .statement-title { font-family: 'Space Grotesk'; font-size: 13px; font-weight: 800; color: var(--orange); letter-spacing: 3px; }
+        .statement-body { font-size: clamp(22px, 2.5vw, 36px); font-weight: 500; line-height: 1.4; color: var(--text-main); }
+        .statement-body span { color: var(--text-sub); }
+
+        /* 5. DỰ ÁN MEDIA: CHẾ ĐỘ XEM KÉP (GRID VIEW & HOVER-REVEAL LIST) */
+        .section-wrap { padding: 90px 6%; max-width: 1360px; margin: auto; }
+        .sec-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 35px; border-bottom: 1px solid var(--hairline); padding-bottom: 20px; }
+        .sec-title { font-family: 'Space Grotesk'; font-size: 36px; font-weight: 800; }
+        
+        .view-switchers { display: flex; gap: 8px; }
+        .switch-tab {
+            background: var(--surface); border: 1px solid var(--border); color: var(--text-sub);
+            padding: 8px 18px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.25s;
+        }
+        .switch-tab.active { background: var(--cyan); color: #000; border-color: var(--cyan); }
+
+        /* CHẾ ĐỘ 1: HOVER-REVEAL LIST INDEX (CHỮ KÝ CỦA AGENCY BTQ) */
+        .project-list-view { display: flex; flex-direction: column; }
+        .project-list-row {
+            display: grid; grid-template-columns: 0.8fr 2fr 1fr 0.5fr; align-items: center;
+            padding: 26px 15px; border-bottom: 1px solid var(--hairline); text-decoration: none;
+            color: var(--text-main); transition: 0.3s; position: relative; cursor: pointer;
+        }
+        .project-list-row:hover { background: var(--surface-hover); padding-left: 25px; }
+        .project-list-row:hover .row-name { color: var(--orange); }
+        .row-cat { font-size: 12px; font-weight: 700; color: var(--cyan); letter-spacing: 1px; }
+        .row-name { font-family: 'Space Grotesk'; font-size: 24px; font-weight: 700; transition: 0.2s; }
+        .row-meta { font-size: 13px; color: var(--text-sub); }
+        .row-arrow { text-align: right; font-size: 20px; color: var(--text-sub); }
+
+        /* KHUNG MEDIA BAY THEO CHUỘT (FLOATING PREVIEW BOX) */
+        #floatingMediaBox {
+            position: fixed; width: 340px; height: 210px; border-radius: 12px;
+            overflow: hidden; pointer-events: none; z-index: 999; opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+            transition: opacity 0.3s, transform 0.2s ease-out;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid var(--cyan);
+        }
+        #floatingMediaBox.active { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        #floatingMediaBox video, #floatingMediaBox img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* CHẾ ĐỘ 2: GRID VIEW (KHI BẤM CHUYỂN TAB) */
+        .project-grid-view { display: none; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px; }
+        .grid-card {
+            background: var(--surface); border-radius: 16px; border: 1px solid var(--border);
+            overflow: hidden; cursor: pointer; transition: 0.3s;
+        }
+        .grid-card:hover { transform: translateY(-8px); border-color: var(--orange); }
+        .grid-thumb { height: 240px; position: relative; overflow: hidden; }
+        .grid-thumb img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .grid-card:hover .grid-thumb img { transform: scale(1.08); }
+        .grid-badge {
+            position: absolute; top: 14px; left: 14px; padding: 5px 12px; border-radius: 6px;
+            font-size: 10px; font-weight: 800; background: rgba(5,7,12,0.85); backdrop-filter: blur(8px);
+            border: 1px solid var(--cyan); color: var(--cyan);
+        }
+
+        /* 6. COLOR GRADING BEFORE / AFTER SLIDER */
+        .compare-box {
+            position: relative; width: 100%; height: 500px; border-radius: 20px;
+            overflow: hidden; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .compare-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        .compare-after {
+            position: absolute; top: 0; left: 0; width: 50%; height: 100%;
+            overflow: hidden; border-right: 2px solid var(--cyan);
+            box-shadow: 0 0 25px var(--cyan);
+        }
+        .compare-after img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.2) saturate(1.4); }
+        .slider-handle {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 44px; height: 44px; border-radius: 50%; background: #fff;
+            border: 3px solid var(--cyan); display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 20px var(--cyan); pointer-events: none; color: #000; font-weight: 900;
+        }
+
+        /* 7. PHIẾU DỰ TOÁN BÁO GIÁ ĐIỆN ẢNH (CALL SHEET) */
+        .callsheet-box {
+            background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+            padding: 40px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px;
+        }
+        .pills-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+        .opt-pill {
+            background: var(--surface-hover); border: 1px solid var(--border); color: var(--text-main);
+            padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.25s;
+        }
+        .opt-pill.active { background: rgba(255, 85, 0, 0.15); border-color: var(--orange); color: var(--orange); }
+        .input-ctrl {
+            width: 100%; padding: 13px 16px; background: var(--surface-hover); border: 1px solid var(--border);
+            border-radius: 8px; color: var(--text-main); margin-top: 8px; font-size: 14px; outline: none;
+        }
+        .input-ctrl:focus { border-color: var(--cyan); }
+
+        /* 8. FOOTER: LIÊN HỆ ĐẦY ĐỦ CƠ SỞ & TRUYỀN THÔNG */
+        footer { background: var(--surface); border-top: 1px solid var(--hairline); padding: 70px 6% 35px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; max-width: 1360px; margin: auto; }
+        .contact-row { margin-top: 10px; color: var(--text-sub); font-size: 14px; display: flex; align-items: center; gap: 10px; }
+        .contact-row strong { color: var(--text-main); }
+        .contact-row a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+
+        /* POPUP LIGHTBOX THÍCH ỨNG THEO ĐỊNH DẠNG */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 4, 7, 0.95); backdrop-filter: blur(25px);
+            z-index: 9999; display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: 0.3s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-body {
+            background: var(--surface); border: 1px solid var(--border);
+            width: 90%; max-width: 860px; border-radius: 20px; padding: 35px; position: relative; max-height: 85vh; overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HEADER TỐI GIẢN CHUẨN BTQ -->
+    <header>
+        <div class="logo-wrap">
+            <div class="logo">JACK<span class="o">GRAPHER</span><span class="c">.</span></div>
+            <div class="logo-sub">CINE PRODUCTION</div>
+        </div>
+        <nav>
+            <a href="#about" data-i18n="nav_about">LỜI NGỎ</a>
+            <a href="#portfolio" data-i18n="nav_portfolio">HỒ SƠ DỰ ÁN</a>
+            <a href="#grading" data-i18n="nav_grading">COLOR GRADING</a>
+            <a href="#quote" data-i18n="nav_quote">LẬP DỰ TOÁN</a>
+            <a href="#contact" data-i18n="nav_contact">LIÊN HỆ</a>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-ctrl" onclick="toggleLang()" id="langBtn">EN ⇄ VI</button>
+            <button class="btn-ctrl" onclick="toggleTheme()">☀️ / 🌙</button>
+            <button class="btn-quote-header" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})" data-i18n="btn_book">BÁO GIÁ NHANH</button>
+        </div>
+    </header>
+
+    <!-- 2. HERO: KINETIC EDITORIAL TYPOGRAPHY -->
+    <section class="hero">
+        <div class="hero-meta">
+            <span>[ 01 // CINE PRODUCTION ]</span>
+            <span>SONY FX3 CINE LINE</span>
+            <span>GLOBAL STANDARD</span>
+        </div>
+        <h1 class="hero-title">
+            <span class="o">POWER OF</span> <span class="outline">VISUALS.</span><br>
+            <span>DIRECTING</span> <span class="o">MOMENTS.</span>
+        </h1>
+        <div class="hero-bottom-row">
+            <p class="hero-desc" data-i18n="hero_desc">
+                Tại Jackgrapher, chúng tôi truyền sự sắc nét của công nghệ và cái hồn điện ảnh vào từng thước phim sự kiện, mang đến những tác phẩm thị giác độc bản và không thể nhầm lẫn.
+            </p>
+            <div style="display:flex; gap:14px;">
+                <button class="btn-quote-header" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})" data-i18n="btn_explore">KHÁM PHÁ DỰ ÁN</button>
+                <button class="btn-ctrl" style="padding:12px 26px;" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})" data-i18n="btn_quote">NHẬN BÁO GIÁ</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MARQUEE STRIP -->
+    <div class="marquee-strip">
+        <div class="marquee-inner">
+            <div class="marquee-text">CORPORATE GALA DINNER <span>★</span></div>
+            <div class="marquee-text">MUSIC FESTIVAL RECAP <span>★</span></div>
+            <div class="marquee-text">CINEMATIC WEDDING STORY <span>★</span></div>
+            <div class="marquee-text">TEAL & ORANGE COLOR SCIENCE <span>★</span></div>
+            <div class="marquee-text">24H EXPRESS DELIVERY <span>★</span></div>
+        </div>
+    </div>
+
+    <!-- 4. LỜI NGỎ CỦA ĐẠO DIỄN (EDITORIAL STATEMENT) -->
+    <section class="statement-section" id="about">
+        <div class="statement-grid">
+            <div class="statement-title" data-i18n="stmt_label">[ LỜI NGỎ // PHILOSOPHY ]</div>
+            <div class="statement-body">
+                "Một khoảnh khắc sự kiện chỉ diễn ra <strong style="color:var(--orange);">đúng một lần duy nhất</strong>. Góc máy của chúng tôi không đơn thuần là ghi hình, mà là <span>khắc họa năng lượng, ánh sáng và cảm xúc vô giá của con người</span> vào từng khung hình chuẩn điện ảnh."
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. HỒ SƠ DỰ ÁN: CHẾ ĐỘ XEM KÉP (HOVER-REVEAL LIST & GRID) -->
+    <section class="section-wrap" id="portfolio">
+        <div class="sec-head">
+            <div>
+                <h2 class="sec-title" data-i18n="port_title">HỒ SƠ DỰ ÁN <span class="o">TIÊU BIỂU</span></h2>
+            </div>
+            <div class="view-switchers">
+                <button class="switch-tab active" onclick="switchProjectView('list')">☰ DANH MỤC (INDEX)</button>
+                <button class="switch-tab" onclick="switchProjectView('grid')">☷ LƯỚI (GRID)</button>
+            </div>
+        </div>
+
+        <!-- VIEW 1: HOVER-REVEAL LIST (CHỮ KÝ ĐẲNG CẤP BTQ) -->
+        <div class="project-list-view" id="listView">
+            <div class="project-list-row" 
+                 onmouseenter="showFloating('video', 'https://assets.mixkit.co/videos/preview/mixkit-stage-lights-illuminating-an-empty-stage-at-night-42171-large.mp4')"
+                 onmouseleave="hideFloating()"
+                 onclick="openModal('Masterise Gala Dinner 2026', 'Doanh Nghiệp', 'hybrid', 'https://assets.mixkit.co/videos/preview/mixkit-stage-lights-illuminating-an-empty-stage-at-night-42171-large.mp4')">
+                <div class="row-cat">DOANH NGHIỆP</div>
+                <div class="row-name">Gala Dinner Masterise 2026</div>
+                <div class="row-meta">⚡ Hybrid (Video 4K + 48 Ảnh)</div>
+                <div class="row-arrow">↗</div>
+            </div>
+
+            <div class="project-list-row" 
+                 onmouseenter="showFloating('video', 'https://assets.mixkit.co/videos/preview/mixkit-audience-raising-their-arms-at-a-concert-42175-large.mp4')"
+                 onmouseleave="hideFloating()"
+                 onclick="openModal('Rave Night Music Festival', 'Recap & Beat', 'video_only', 'https://assets.mixkit.co/videos/preview/mixkit-audience-raising-their-arms-at-a-concert-42175-large.mp4')">
+                <div class="row-cat" style="color:var(--orange);">FESTIVAL / BEAT</div>
+                <div class="row-name">Rave Night Music Festival</div>
+                <div class="row-meta">🎬 Chỉ Video Highlight 4K</div>
+                <div class="row-arrow">↗</div>
+            </div>
+
+            <div class="project-list-row" 
+                 onmouseenter="showFloating('image', 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800')"
+                 onmouseleave="hideFloating()"
+                 onclick="openModal('Sunset Wedding Phú Quốc', 'Phóng Sự Cưới', 'photo_only', '')">
+                <div class="row-cat">PHÓNG SỰ CƯỚI</div>
+                <div class="row-name">Sunset Wedding - Khang & My</div>
+                <div class="row-meta">📷 Chỉ Bộ Ảnh (64 Tấm HD)</div>
+                <div class="row-arrow">↗</div>
+            </div>
+        </div>
+
+        <!-- VIEW 2: GRID VIEW -->
+        <div class="project-grid-view" id="gridView">
+            <div class="grid-card" onclick="openModal('Masterise Gala Dinner 2026', 'Doanh Nghiệp', 'hybrid', 'https://assets.mixkit.co/videos/preview/mixkit-stage-lights-illuminating-an-empty-stage-at-night-42171-large.mp4')">
+                <div class="grid-thumb">
+                    <span class="grid-badge">⚡ HYBRID (VIDEO + ẢNH)</span>
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800" alt="Gala">
+                </div>
+                <div style="padding:22px;">
+                    <h3 style="font-size:18px;">Gala Dinner Masterise 2026</h3>
+                    <p style="color:var(--text-sub); font-size:13px; margin-top:5px;">3 Máy ảnh 4K + Flycam bao quát 2.500 khách tại GEM Center.</p>
+                </div>
+            </div>
+
+            <div class="grid-card" onclick="openModal('Rave Night Music Festival', 'Recap', 'video_only', 'https://assets.mixkit.co/videos/preview/mixkit-audience-raising-their-arms-at-a-concert-42175-large.mp4')">
+                <div class="grid-thumb">
+                    <span class="grid-badge" style="border-color:var(--orange); color:var(--orange);">🎬 CHỈ VIDEO 4K</span>
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800" alt="Festival">
+                </div>
+                <div style="padding:22px;">
+                    <h3 style="font-size:18px;">Rave Night Music Festival</h3>
+                    <p style="color:var(--text-sub); font-size:13px; margin-top:5px;">Dựng nhịp cắt nhanh, âm thanh đồng bộ beat drop của DJ.</p>
+                </div>
+            </div>
+
+            <div class="grid-card" onclick="openModal('Sunset Wedding Phú Quốc', 'Phóng Sự Cưới', 'photo_only', '')">
+                <div class="grid-thumb">
+                    <span class="grid-badge">📷 CHỈ BỘ ẢNH (64 TẤM)</span>
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800" alt="Wedding">
+                </div>
+                <div style="padding:22px;">
+                    <h3 style="font-size:18px;">Sunset Wedding - Khang & My</h3>
+                    <p style="color:var(--text-sub); font-size:13px; margin-top:5px;">Bộ ảnh phóng sự bắt trọn khoảnh khắc trao nhẫn dưới hoàng hôn biển.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- KHUNG PREVIEW NỔI BÁM CHUỘT -->
+        <div id="floatingMediaBox">
+            <video id="floatVideo" autoplay loop muted playsinline></video>
+            <img id="floatImg" src="" alt="preview">
+        </div>
+    </section>
+
+    <!-- 6. COLOR GRADING BEFORE / AFTER SLIDER -->
+    <section class="section-wrap" id="grading">
+        <div class="sec-head">
+            <div>
+                <h2 class="sec-title" data-i18n="grade_title">CHẤT LƯỢNG MÀU SẮC <span class="o">(COLOR SCIENCE)</span></h2>
+                <p style="color:var(--text-sub); margin-top:6px;" data-i18n="grade_desc">Kéo thanh trượt để so sánh cảnh quay phẳng (S-Log3) và bản hoàn thiện màu sắc.</p>
+            </div>
+            <span style="color:var(--cyan); font-weight:800; font-size:13px;" data-i18n="grade_drag">◄ KÉO CHUỘT SO SÁNH ►</span>
+        </div>
+        <div class="compare-box" id="compareBox">
+            <img class="compare-img" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1600&auto=format&fit=crop" style="filter: grayscale(85%) brightness(0.9) contrast(0.8);" alt="Log Footage">
+            <div class="compare-after" id="compareAfter">
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1600&auto=format&fit=crop" alt="Color Graded">
+            </div>
+            <div class="slider-handle" id="sliderHandle">↔</div>
+        </div>
+    </section>
+
+    <!-- 7. PHIẾU DỰ TOÁN BÁO GIÁ ĐIỆN ẢNH -->
+    <section class="section-wrap" id="quote">
+        <div class="sec-head">
+            <div>
+                <h2 class="sec-title" data-i18n="q_title">LẬP DỰ TOÁN & <span class="o">BÁO GIÁ NHANH</span></h2>
+                <p style="color:var(--text-sub); margin-top:6px;" data-i18n="q_desc">Tùy biến cấu hình máy móc và dịch vụ cho sự kiện của bạn.</p>
+            </div>
+        </div>
+
+        <div class="callsheet-box">
+            <div>
+                <label style="font-size:13px; font-weight:700; color:var(--text-sub);" data-i18n="q_l1">1. ĐỊNH HƯỚNG QUAY CHỤP</label>
+                <div class="pills-row" id="evtGroup">
+                    <div class="opt-pill active" onclick="setEvt(this, 'Gala Doanh Nghiệp')">Gala Doanh Nghiệp</div>
+                    <div class="opt-pill" onclick="setEvt(this, 'Khai Trương / Brand')">Khai Trương / Brand</div>
+                    <div class="opt-pill" onclick="setEvt(this, 'Phóng Sự Cưới')">Phóng Sự Cưới</div>
+                    <div class="opt-pill" onclick="setEvt(this, 'Festival / Bar')">Festival / Bar</div>
+                </div>
+
+                <label style="font-size:13px; font-weight:700; color:var(--text-sub); margin-top:25px; display:block;" data-i18n="q_l2">2. TRANG BỊ & DỊCH VỤ ĐI KÈM</label>
+                <div class="pills-row" id="srvGroup">
+                    <div class="opt-pill active" onclick="this.classList.toggle('active')">Quay Video 4K FX3</div>
+                    <div class="opt-pill active" onclick="this.classList.toggle('active')">Chụp Ảnh Khoảnh Khắc</div>
+                    <div class="opt-pill" onclick="this.classList.toggle('active')">Flycam / Drone Toàn Cảnh</div>
+                    <div class="opt-pill" onclick="this.classList.toggle('active')">Bàn Giao Thần Tốc 24H</div>
+                </div>
+
+                <div style="margin-top:25px;">
+                    <label style="font-size:13px; font-weight:700; color:var(--text-sub);" data-i18n="q_l3">SỐ ĐIỆN THOẠI / ZALO NHẬN BÁO GIÁ (*)</label>
+                    <input type="tel" id="userPhone" class="input-ctrl" placeholder="Ví dụ: 0912 345 678" required>
+                </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; justify-content:space-between; background:var(--surface-hover); padding:30px; border-radius:16px; border:1px solid var(--border);">
+                <div>
+                    <h4 style="color:var(--cyan); font-size:18px;" data-i18n="q_sum">PHIẾU SẢN XUẤT TỔNG HỢP</h4>
+                    <p style="font-size:13px; color:var(--text-sub); margin-top:8px;" data-i18n="q_note">Thông tin được chuyển trực tiếp đến Zalo của Jackgrapher để báo giá tối ưu trong 10 phút.</p>
+                    <div style="margin:20px 0; font-size:13px; line-height:1.9;">
+                        <div>● <span data-i18n="q_evt">Sự kiện:</span> <strong id="lblEvtName">Gala Doanh Nghiệp</strong></div>
+                        <div>● <span data-i18n="q_st">Tiêu chuẩn:</span> <strong>Sony Cinema Line + Màu Teal & Orange</strong></div>
+                    </div>
+                </div>
+                <button class="btn-quote-header" style="width:100%; border-radius:10px;" onclick="sendQuote()" data-i18n="btn_send_quote">GỬI YÊU CẦU BÁO GIÁ</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FOOTER: THÔNG TIN LIÊN HỆ ĐẦY ĐỦ -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div>
+                <div class="logo">JACK<span class="o">GRAPHER</span><span class="c">.</span></div>
+                <p style="color:var(--text-sub); font-size:13px; margin-top:12px; line-height:1.6;" data-i18n="ft_desc">
+                    Đạo diễn hình ảnh và nhiếp ảnh gia sự kiện chuyên nghiệp. Hoạt động tại TP.HCM, Hà Nội và nhận tour trên toàn quốc.
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size:15px; margin-bottom:12px;" data-i18n="ft_c1">THÔNG TIN TRỰC TIẾP</h4>
+                <div class="contact-row">📞 Hotline: <strong>0909 xxx xxx</strong></div>
+                <div class="contact-row">💬 Zalo: <a href="https://zalo.me" target="_blank">Chat Trực Tiếp 24/7</a></div>
+                <div class="contact-row">✉ Email: <strong>jackgrapher.media@gmail.com</strong></div>
+            </div>
+            <div>
+                <h4 style="font-size:15px; margin-bottom:12px;" data-i18n="ft_c2">KẾT NỐI TRUYỀN THÔNG</h4>
+                <div class="contact-row">🌐 Fanpage: <a href="https://www.facebook.com/Jackgrapher" target="_blank">fb.com/Jackgrapher</a></div>
+                <div class="contact-row">🎬 TikTok: <a href="#">@jackgrapher_media</a></div>
+            </div>
+        </div>
+        <div style="text-align:center; color:var(--text-sub); font-size:12px; margin-top:45px; padding-top:20px; border-top:1px solid var(--hairline);">
+            © 2026 JACKGRAPHER. Inspired by BTQ Agency Precision Standards.
+        </div>
+    </footer>
+
+    <!-- POPUP LIGHTBOX ĐA NĂNG -->
+    <div class="modal-overlay" id="mediaModal">
+        <div class="modal-body">
+            <button onclick="closeModal()" style="position:absolute; top:20px; right:20px; background:none; border:none; color:var(--text-sub); font-size:24px; cursor:pointer;">✕</button>
+            <h3 id="popTitle" style="font-family:'Space Grotesk'; font-size:22px; margin-bottom:4px;">Tên Dự Án</h3>
+            <p id="popSub" style="color:var(--cyan); font-size:12px; font-weight:700; margin-bottom:15px;">Thể Loại</p>
+            <video id="popVideo" controls autoplay loop style="width:100%; border-radius:12px; max-height:420px; background:#000; display:none;"></video>
+            <div id="popPhotoGrid" style="display:none; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:12px;">
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=400" style="width:100%; height:150px; object-fit:cover; border-radius:8px;" alt="p1">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=400" style="width:100%; height:150px; object-fit:cover; border-radius:8px;" alt="p2">
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT TƯƠNG TÁC HOÀN CHỈNH -->
+    <script>
+        // 1. FLOATING MEDIA REVEAL EFFECT (CHỮ KÝ CỦA AGENCY BTQ)
+        const floatBox = document.getElementById('floatingMediaBox');
+        const floatVid = document.getElementById('floatVideo');
+        const floatImg = document.getElementById('floatImg');
+        let mouseX = 0, mouseY = 0, floatX = 0, floatY = 0;
+
+        window.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function renderFloating() {
+            floatX += (mouseX - floatX) * 0.15;
+            floatY += (mouseY - floatY) * 0.15;
+            floatBox.style.left = floatX + 30 + 'px';
+            floatBox.style.top = floatY + 30 + 'px';
+            requestAnimationFrame(renderFloating);
+        }
+        renderFloating();
+
+        function showFloating(type, src) {
+            if(type === 'video') {
+                floatVid.style.display = 'block';
+                floatImg.style.display = 'none';
+                floatVid.src = src;
+                floatVid.play();
+            } else {
+                floatVid.style.display = 'none';
+                floatImg.style.display = 'block';
+                floatImg.src = src;
+            }
+            floatBox.classList.add('active');
+        }
+
+        function hideFloating() {
+            floatBox.classList.remove('active');
+            floatVid.pause();
+        }
+
+        // 2. CHUYỂN ĐỔI CHẾ ĐỘ XEM (LIST VS GRID)
+        function switchProjectView(mode) {
+            document.querySelectorAll('.switch-tab').forEach(t => t.classList.remove('active'));
+            if(mode === 'list') {
+                document.querySelectorAll('.switch-tab')[0].classList.add('active');
+                document.getElementById('listView').style.display = 'flex';
+                document.getElementById('gridView').style.display = 'none';
+            } else {
+                document.querySelectorAll('.switch-tab')[1].classList.add('active');
+                document.getElementById('listView').style.display = 'none';
+                document.getElementById('gridView').style.display = 'grid';
+            }
+        }
+
+        // 3. COLOR GRADING BEFORE / AFTER SLIDER
+        const compareBox = document.getElementById('compareBox');
+        const compareAfter = document.getElementById('compareAfter');
+        const sliderHandle = document.getElementById('sliderHandle');
+        function slide(e) {
+            const rect = compareBox.getBoundingClientRect();
+            let pos = ((e.clientX || (e.touches && e.touches[0].clientX)) - rect.left) / rect.width * 100;
+            if (pos < 5) pos = 5; if (pos > 95) pos = 95;
+            compareAfter.style.width = pos + '%';
+            sliderHandle.style.left = pos + '%';
+        }
+        compareBox.addEventListener('mousemove', slide);
+        compareBox.addEventListener('touchmove', slide);
+
+        // 4. SONG NGỮ (VI/EN) VÀ THEME SÁNG TỐI
+        let lang = 'vi';
+        const dict = {
+            vi: {
+                nav_about: "LỜI NGỎ", nav_portfolio: "HỒ SƠ DỰ ÁN", nav_grading: "COLOR GRADING", nav_quote: "LẬP DỰ TOÁN", nav_contact: "LIÊN HỆ",
+                btn_book: "BÁO GIÁ NHANH", hero_desc: "Tại Jackgrapher, chúng tôi truyền sự sắc nét của công nghệ và cái hồn điện ảnh vào từng thước phim sự kiện, mang đến những tác phẩm thị giác độc bản.",
+                btn_explore: "KHÁM PHÁ DỰ ÁN", btn_quote: "NHẬN BÁO GIÁ", stmt_label: "[ LỜI NGỎ // PHILOSOPHY ]",
+                port_title: "HỒ SƠ DỰ ÁN", grade_title: "CHẤT LƯỢNG MÀU SẮC", grade_desc: "Kéo thanh trượt để so sánh cảnh quay phẳng (S-Log3) và bản hoàn thiện màu sắc.",
+                grade_drag: "◄ KÉO CHUỘT SO SÁNH ►", q_title: "LẬP DỰ TOÁN & BÁO GIÁ NHANH", q_desc: "Tùy biến cấu hình máy móc và dịch vụ cho sự kiện của bạn.",
+                q_l1: "1. ĐỊNH HƯỚNG QUAY CHỤP", q_l2: "2. TRANG BỊ & DỊCH VỤ ĐI KÈM", q_l3: "SỐ ĐIỆN THOẠI / ZALO NHẬN BÁO GIÁ (*)",
+                q_sum: "PHIẾU SẢN XUẤT TỔNG HỢP", q_note: "Thông tin được chuyển trực tiếp đến Zalo của Jackgrapher để báo giá tối ưu trong 10 phút.",
+                q_evt: "Sự kiện:", q_st: "Tiêu chuẩn:", btn_send_quote: "GỬI YÊU CẦU BÁO GIÁ",
+                ft_desc: "Đạo diễn hình ảnh và nhiếp ảnh gia sự kiện chuyên nghiệp. Hoạt động tại TP.HCM, Hà Nội và nhận tour trên toàn quốc.",
+                ft_c1: "THÔNG TIN TRỰC TIẾP", ft_c2: "KẾT NỐI TRUYỀN THÔNG"
+            },
+            en: {
+                nav_about: "PHILOSOPHY", nav_portfolio: "PORTFOLIO", nav_grading: "COLOR GRADING", nav_quote: "ESTIMATE", nav_contact: "CONTACT",
+                btn_book: "GET QUOTE", hero_desc: "At Jackgrapher, we infuse cutting-edge technology and cinematic soul into every event frame, crafting unique and unmistakably bold visual works.",
+                btn_explore: "EXPLORE WORKS", btn_quote: "GET QUOTE", stmt_label: "[ PHILOSOPHY // VISION ]",
+                port_title: "FEATURED PORTFOLIO", grade_title: "COLOR SCIENCE QUALITY", grade_desc: "Slide to compare flat footage (S-Log3) with Hollywood finished grading.",
+                grade_drag: "◄ DRAG TO COMPARE ►", q_title: "ESTIMATE & PROPOSAL BUILDER", q_desc: "Customize production gear and deliverables for your event.",
+                q_l1: "1. EVENT CATEGORY", q_l2: "2. PRODUCTION GEAR & ADD-ONS", q_l3: "PHONE / ZALO FOR ESTIMATE (*)",
+                q_sum: "PRODUCTION CALL SHEET", q_note: "Your request is dispatched directly to Jackgrapher's Zalo for prompt quotes within 10 mins.",
+                q_evt: "Event:", q_st: "Standard:", btn_send_quote: "SUBMIT PRODUCTION ORDER",
+                ft_desc: "Professional Cinematographer and Event Visual Director. Operating in HCMC, Hanoi, and worldwide tours.",
+                ft_c1: "DIRECT CONTACT", ft_c2: "SOCIAL CHANNELS"
+            }
+        };
+
+        function toggleLang() {
+            lang = lang === 'vi' ? 'en' : 'vi';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const k = el.getAttribute('data-i18n');
+                if(dict[lang][k]) el.innerText = dict[lang][k];
+            });
+            document.getElementById('langBtn').innerText = lang === 'vi' ? 'EN ⇄ VI' : 'VI ⇄ EN';
+        }
+
+        function toggleTheme() {
+            const h = document.documentElement;
+            h.setAttribute('data-theme', h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        }
+
+        function setEvt(el, val) {
+            document.querySelectorAll('#evtGroup .opt-pill').forEach(p => p.classList.remove('active'));
+            el.classList.add('active');
+            document.getElementById('lblEvtName').innerText = val;
+        }
+
+        function sendQuote() {
+            const phone = document.getElementById('userPhone').value;
+            if(!phone) {
+                alert(lang === 'vi' ? 'Vui lòng nhập số điện thoại hoặc Zalo để Jackgrapher liên hệ!' : 'Please enter your phone number or Zalo!');
+                return;
+            }
+            alert(lang === 'vi' 
+                ? '✓ Đã nhận yêu cầu thành công! Jackgrapher sẽ liên hệ Zalo số ' + phone + ' trong 10 phút.'
+                : '✓ Call sheet received! Jackgrapher will contact your Zalo/Phone (' + phone + ') within 10 mins.');
+            document.getElementById('userPhone').value = '';
+        }
+
+        // 5. MODAL LIGHTBOX
+        function openModal(title, cat, type, videoSrc) {
+            document.getElementById('popTitle').innerText = title;
+            document.getElementById('popSub').innerText = cat;
+            const vid = document.getElementById('popVideo');
+            const grid = document.getElementById('popPhotoGrid');
+            if(type === 'video_only' || type === 'hybrid') {
+                vid.style.display = 'block'; grid.style.display = 'none';
+                vid.src = videoSrc; vid.play();
+            } else {
+                vid.style.display = 'none'; grid.style.display = 'grid';
+            }
+            document.getElementById('mediaModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('popVideo').pause();
+            document.getElementById('mediaModal').classList.remove('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+/* Theme tokens: dùng bg-paper / text-ink / bg-surface (+ /opacity) */
+@theme inline {
+  --color-paper: var(--c-paper);
+  --color-ink: var(--c-ink);
+  --color-surface: var(--c-surface);
+  --font-sans: 'Be Vietnam Pro', 'Inter', system-ui, sans-serif;
+  --font-display: 'Unbounded', 'Be Vietnam Pro', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  :root {
+    --c-paper: #0A0A0A;
+    --c-ink: #F2F0EB;
+    --c-surface: #141414;
+    --bg: var(--c-paper);
+    --text: var(--c-ink);
+    --orange: #FF5A1F;
+    color-scheme: dark;
+    font-family: var(--font-sans);
+  }
+
+  :root.light {
+    --c-paper: #F4F0E8;
+    --c-ink: #16130F;
+    --c-surface: #E7E1D6;
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--c-paper);
+    color: var(--c-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #FF5A1F;
+    color: #0A0A0A;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Editorial serif accent — chữ nhấn nghiêng kiểu tạp chí */
+.font-serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Viewfinder HUD — ngôn ngữ khung ngắm máy quay */
+.vf-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: color-mix(in srgb, var(--c-ink) 35%, transparent);
+  border-style: solid;
+  border-width: 0;
+}
+.vf-corner.tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
+.vf-corner.tr { top: 0; right: 0; border-top-width: 1px; border-right-width: 1px; }
+.vf-corner.bl { bottom: 0; left: 0; border-bottom-width: 1px; border-left-width: 1px; }
+.vf-corner.br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
+
+@keyframes recBlink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0.15; }
+}
+.rec-dot { animation: recBlink 1.2s steps(1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rec-dot { animation: none; }
+}
+
+/* Subtle Film Grain Overlay */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Sequential SVG Path Drawing */
+@keyframes drawPath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.line-draw-seq {
+  stroke-dashoffset: var(--path-length, 1000);
+  animation: drawPath var(--draw-duration, 1.2s) cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation-delay: var(--draw-delay, 0s);
+}
+
+/* Photographer Subtle Breathing */
+@keyframes breathing {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2.5px);
+  }
+}
+
+.animate-breathing {
+  animation: breathing 4.5s ease-in-out infinite;
+}
+
+/* Camera Lens Ring Rotation (Autofocus feel) */
+@keyframes lensFocus {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-lens-focus {
+  animation: lensFocus 8s ease-in-out infinite;
+  transform-origin: 320px 245px;
+}
+
+/* Flash & Viewfinder Shutter Effect */
+@keyframes shutterFlash {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.16;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.camera-flash {
+  animation: shutterFlash 180ms ease-out forwards;
+}
+
+/* Smooth Lenis Scroll setup */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Hide custom cursor completely on touch devices */
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor,
+  [data-cursor] {
+    cursor: auto !important;
+  }
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+
+/* Light mode grain */
+:root.light .film-grain {
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+}
+
+/* Mượt khi đổi sáng/tối */
+html.theme-anim,
+html.theme-anim *,
+html.theme-anim *::before,
+html.theme-anim *::after {
+  transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease, fill 0.5s ease, stroke 0.5s ease !important;
+}
+
+/* Scroll reveal (gắn tự động trong App.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 48px, 0);
+  filter: blur(8px);
+  transition:
+    opacity 1s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 1s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
