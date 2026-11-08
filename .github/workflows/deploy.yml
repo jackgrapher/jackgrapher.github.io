@@ -22,13 +22,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Ưu tiên Bun; nếu GitHub tạm thời không tải được Bun thì build bằng Node/npm
       - uses: oven-sh/setup-bun@v2
+        id: bun
+        continue-on-error: true
 
-      - name: Cài thư viện
-        run: bun install --frozen-lockfile
+      - uses: actions/setup-node@v4
+        if: steps.bun.outcome != 'success'
+        with:
+          node-version: 22
 
-      - name: Build
-        run: bun run build
+      - name: Cài thư viện & build
+        run: |
+          if [ "${{ steps.bun.outcome }}" = "success" ]; then
+            bun install --frozen-lockfile
+            bun run build
+          else
+            echo "Bun không khả dụng — dùng npm"
+            npm install --legacy-peer-deps --no-audit --no-fund
+            npx vite build
+          fi
 
       # Trang 404 = index.html để link trực tiếp không bị lỗi
       - name: SPA fallback
