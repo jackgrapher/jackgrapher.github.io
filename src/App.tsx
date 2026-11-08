@@ -52,9 +52,8 @@ export default function App() {
       if (depth < 2 && kids.length === 1 && kids[0].children.length > 1) return pick(kids[0], depth + 1);
       return kids;
     };
-    const groups = Array.from(document.querySelectorAll('main > section'))
-      .slice(1)
-      .concat(Array.from(document.querySelectorAll('footer')));
+    // Footer thấp nằm sát đáy trang nên không dùng hiệu ứng hiện dần (luôn hiển thị)
+    const groups = Array.from(document.querySelectorAll('main > section')).slice(1);
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((en) => {
