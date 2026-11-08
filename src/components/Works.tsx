@@ -205,8 +205,8 @@ const Card: React.FC<{
         </div>
 
         {/* Caption: name left · location right */}
-        <div className="mt-4 flex items-start justify-between gap-4">
-          <div className="min-w-0 flex-1">
+        <div className="mt-4 flex flex-col sm:flex-row items-start justify-between gap-2 sm:gap-4">
+          <div className="min-w-0 w-full sm:w-auto sm:flex-1">
             <h3 className="font-display text-lg sm:text-xl uppercase leading-tight line-clamp-2 transition-colors group-hover:text-[#FF5A1F]">
               {title}
             </h3>
@@ -214,9 +214,9 @@ const Card: React.FC<{
               <p className="mt-1 text-[11px] tracking-[0.18em] uppercase text-ink/40">{p.client}</p>
             )}
           </div>
-          <div className="max-w-[38%] shrink-0 text-right text-[11px] tracking-[0.18em] uppercase leading-relaxed text-ink/50">
+          <div className="flex flex-wrap gap-x-2 sm:block sm:max-w-[38%] shrink-0 sm:text-right text-[10px] sm:text-[11px] tracking-[0.18em] uppercase leading-relaxed text-ink/50">
             <div>{p.location}</div>
-            <div className="text-ink/30 tabular-nums">{p.year}</div>
+            <div className="text-ink/30 tabular-nums"><span className="sm:hidden mr-2">·</span>{p.year}</div>
           </div>
         </div>
       </button>

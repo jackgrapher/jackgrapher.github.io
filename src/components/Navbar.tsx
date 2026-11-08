@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Sun, Moon, ChevronDown, Share2 } from 'lucide-react';
+import { Sun, Moon, ChevronDown, Share2, MessageCircle } from 'lucide-react';
 import { Language } from '../types';
 import { translations } from '../data/translations';
 import { ContactCard, SocialCard, panelCls } from './ContactPanels';
@@ -98,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 px-6 sm:px-12 flex items-center justify-between font-sans text-xs tracking-widest uppercase transition-all duration-300 pointer-events-auto ${
+      className={`fixed top-0 left-0 w-full z-50 px-4 sm:px-12 gap-3 flex items-center justify-between font-sans text-xs tracking-widest uppercase transition-all duration-300 pointer-events-auto ${
         visible ? 'translate-y-0' : '-translate-y-full'
       } ${
         scrolled
@@ -110,7 +110,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
       <a
         href="#"
         data-cursor="pointer"
-        className="font-display text-base font-extrabold tracking-wider text-ink"
+        className="shrink-0 whitespace-nowrap font-display text-[13px] min-[400px]:text-sm sm:text-base font-extrabold tracking-wide sm:tracking-wider text-ink"
       >
         JACKGRAPHER<span className="text-[#FF5A1F]">.</span>
       </a>
@@ -134,7 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
       </nav>
 
       {/* Language Switch */}
-      <div ref={clusterRef} className="relative flex items-center gap-2 sm:gap-3">
+      <div ref={clusterRef} className="relative shrink-0 flex items-center gap-1.5 min-[400px]:gap-2 sm:gap-3">
         <button
           onClick={toggleTheme}
           data-cursor="pointer"
@@ -152,7 +152,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
         <button
           onClick={onToggleLang}
           data-cursor="pointer"
-          className="px-1.5 text-ink/60 hover:text-[#FF5A1F] transition-colors cursor-pointer font-bold"
+          className="px-1.5 whitespace-nowrap text-ink/60 hover:text-[#FF5A1F] transition-colors cursor-pointer font-bold"
         >
           {lang === 'vi' ? 'EN' : 'VI'}
         </button>
@@ -163,12 +163,14 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
           data-cursor="pointer"
           aria-expanded={open === 'contact'}
           aria-haspopup="dialog"
-          className={`h-9 inline-flex items-center gap-1.5 rounded-full border pl-4 pr-3 text-[11px] font-semibold transition-colors cursor-pointer ${
+          aria-label={t.nav_contact}
+          className={`h-9 shrink-0 whitespace-nowrap inline-flex items-center justify-center gap-1.5 rounded-full border w-9 min-[400px]:w-auto min-[400px]:pl-4 min-[400px]:pr-3 text-[11px] font-semibold transition-colors cursor-pointer ${
             open === 'contact' ? 'border-[#FF5A1F] text-[#FF5A1F]' : 'border-ink/15 text-ink/80 hover:border-ink/40 hover:text-ink'
           }`}
         >
-          {t.nav_contact}
-          <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${open === 'contact' ? 'rotate-180' : ''}`} />
+          <MessageCircle className="w-4 h-4 min-[400px]:hidden" strokeWidth={1.8} />
+          <span className="hidden min-[400px]:inline">{t.nav_contact}</span>
+          <ChevronDown className={`hidden min-[400px]:block w-3.5 h-3.5 transition-transform duration-300 ${open === 'contact' ? 'rotate-180' : ''}`} />
         </button>
 
         {/* Chia sẻ / mạng xã hội */}
@@ -178,7 +180,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
           aria-expanded={open === 'share'}
           aria-haspopup="dialog"
           aria-label={t.sp_title}
-          className={`w-9 h-9 grid place-items-center rounded-full border transition-colors cursor-pointer ${
+          className={`w-9 h-9 shrink-0 grid place-items-center rounded-full border transition-colors cursor-pointer ${
             open === 'share' ? 'border-[#FF5A1F] text-[#FF5A1F]' : 'border-ink/15 text-ink/70 hover:border-ink/40 hover:text-ink'
           }`}
         >
